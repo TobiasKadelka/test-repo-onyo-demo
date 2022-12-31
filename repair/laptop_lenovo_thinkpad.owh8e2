@@ -2,6 +2,6 @@ type: laptop
 make: lenovo
 model: thinkpad
 serial: owh8e2
-RAM: 8GB
+RAM: 32GB
 display: 14.6
 USB_A: 2
