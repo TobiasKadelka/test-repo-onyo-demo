@@ -1,0 +1,8 @@
+type: laptop
+make: apple
+model: macbook
+serial: 9il2b4
+RAM: 8GB
+display: 13.3
+USB_A: 2
+USB_C: 1
