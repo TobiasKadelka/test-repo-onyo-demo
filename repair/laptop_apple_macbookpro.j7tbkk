@@ -3,3 +3,4 @@ make: apple
 model: macbookpro
 serial: j7tbkk
 display: '13.3'
+USB_A: 2

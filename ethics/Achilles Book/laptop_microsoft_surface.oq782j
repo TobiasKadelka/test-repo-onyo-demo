@@ -5,3 +5,4 @@ serial: oq782j
 RAM: 8GB
 display: 12.4
 touchscreen: yes
+USB_A: 2
