@@ -1,0 +1,27 @@
+name: Deploy Onyo Demo
+# should get a new demo repository everyday or when the setup branch is updated
+on:
+  schedule:
+    # every day at UTC (e.g. an hour earlier than in juelich)
+    # format 'minutes hours * * *'
+    - cron: '52 8 * * *'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          printf '\nsetup git\n'
+          git config --global user.email "yoko@onyo.org"
+          git config --global user.name "Yoko Onyo"
+          git config pull.rebase true
+
+          printf '\nget demo repository\n'
+          git remote add demo https://github.com/psyinfra/onyo-demo
+          git fetch demo main
+          git checkout demo/main
+
+          printf '\npush to onyo-demo\n'
+          git push --force origin HEAD:main
