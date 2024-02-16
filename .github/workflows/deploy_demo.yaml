@@ -1,0 +1,39 @@
+name: Example Push Action
+on: push
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          printf '\nsetup git\n'
+          git config --global user.email "yoko@onyo.org"
+          git config --global user.name "Yoko Onyo"
+          git config pull.rebase true
+
+          printf '\nswitch to main branch\n'
+          git checkout --orphan main
+
+          # build demo
+          printf '\nget the demo repo\n'
+          git clone https://github.com/psyinfra/onyo-demo
+          git submodule update --init
+          git add .
+          git commit -m "onyo demo!"
+
+          #printf '\nset the destination for the demo repo\n'
+          #git remote add origin https://TobiasKadelka:${GITHUB_TOKEN}@github.com/TobiasKadelka/test-repo-onyo-demo.git
+
+          #printf '\npull the demo repo from onyo\n'
+          #git pull onyo_upstream main
+
+          printf '\n\n'
+          git log
+          printf '\n\n'
+
+          printf '\npush to onyo-demo\n'
+          git push --force --set-upstream origin main
