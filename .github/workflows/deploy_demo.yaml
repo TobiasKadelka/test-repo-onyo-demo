@@ -1,10 +1,13 @@
 name: Deploy Onyo Demo
 # should get a new demo repository everyday or when the setup branch is updated
 on:
+  push:
+    branches:
+      - setup
   schedule:
     # every day at UTC (e.g. an hour earlier than in juelich)
     # format 'minutes hours * * *'
-    - cron: '52 8 * * *'
+    - cron: '40 9,10,11 * * *'
 permissions:
   contents: write
 jobs:
