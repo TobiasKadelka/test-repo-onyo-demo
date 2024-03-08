@@ -1,10 +1,12 @@
+#TODO: I commented out the on schedule push to stop it happening.
 name: Pull Onyo Demo
 # get a new demo repository everyday at 4:30 UTC a.k.a 3:30 in Juelich
-on:
-  schedule:
+
+# on:
+  # schedule:
     # every day at 4:30 UTC (i.e. an hour earlier than in juelich)
     # format 'minutes hours * * *'
-    - cron: '5 * * * *'
+    # - cron: '* 4 * * *'
 permissions:
   contents: write
 jobs:
